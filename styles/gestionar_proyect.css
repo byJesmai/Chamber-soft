@@ -191,29 +191,56 @@ button {
 
 /* hasta aqui va el los estilos del header del proyecto  */
 
+.table {
+  max-width: 1000px;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 20px;
+  border-radius: 8px;
 
-  label{
-    display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-}
-input{
-    display: block;
-    height: 50px;
-    width: 30%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
 }
 
-  .container{
-    margin-top: 4%;
-    width: 70%;
-    height: 700px;
-    background-color: rgb(187, 183, 183);
-    border-radius: 15px;
-  }
+h1 {
+  padding: 0;
+  color: white;
+}
+
+table {
+  
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+th:hover {
+  background-color: #ddd;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.sort-icon::after {
+  content: '\25B2';
+  margin-left: 5px;
+}
+
+.sort-icon.desc::after {
+  content: '\25BC';
+}

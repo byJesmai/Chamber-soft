@@ -24,7 +24,7 @@
       href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/styles/crear.css" />
+    <link rel="stylesheet" href="/styles/gestionar_proyect.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -35,7 +35,7 @@
       src="https://kit.fontawesome.com/8166e45fa4.js"
       crossorigin="anonymous"
     ></script>
-    <title>Principal</title>
+    <title>Gestionar Proyectos</title>
   </head>
 
   <header>
@@ -93,46 +93,26 @@
   </header>
 
   <body style="background-color: #080710">
-
-        <div class="card">
-          <h1>Creación de nuevo proyecto</h1>
-          <form onsubmit="crear_proyect(event)">
-              <div class="form-grid">
-                  <div class="form-group">
-                      <label for="project-name-1">Nombre del proyecto</label>
-                      <input type="text" id="nameproyect" placeholder="Nombre del proyecto">
-                  </div>
-                  <div class="form-group">
-                      <label for="project-name-2">Fecha de Inicio</label>
-                      <input
-                      type="date"
-                      class="form-control"
-                      id="creationDateFromCampaignIni"
-                      value="2021-01-01"
-                    />
-                  </div>
-                  <div class="form-group">
-                      <label for="owner-1">Propietario</label>
-                      <input type="text" id="propietarioproyect" placeholder="nombre del propietario">
-                  </div>
-                  <div class="form-group">
-                      <label for="owner-2">Fecha de Fin</label>
-                      <input
-                      type="date"
-                      class="form-control"
-                      id="creationDateToCampaignFin"
-                      value="2021-02-01"
-                    />
-                  </div>
-              </div>
-              <div class="button-container">
-                <button  type="submit" class="button-86">siguiente</button>
-              </div>
-          </form>
-      </div>
+        <div class="table">
+        <h1>Tabla de Proyectos</h1>
+        <table id="proyectosTable">
+            <thead>
+                <tr>
+                    <th data-sort="id">ID <span class="sort-icon"></span></th>
+                    <th data-sort="nombre">Nombre del Proyecto <span class="sort-icon"></span></th>
+                    <th data-sort="propietario">Propietario <span class="sort-icon"></span></th>
+                    <th data-sort="participantes">Participantes <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Los datos de la tabla se insertarán aquí dinámicamente -->
+            </tbody>
+        <
   </body>
 </html>
 
 <script src="/logic/proyect.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+
