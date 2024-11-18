@@ -100,3 +100,54 @@ app.post("/register", (req, res) => {
         );
     });
 });
+
+app.post("/create_proyect", (req, res) => {
+    // Imprimir el contenido recibido en el cuerpo de la solicitud
+    console.log('Datos recibidos en el servidor:', req.body);
+
+    const { nameproyect, propietarioproyect, creationDateFromCampaignIni, creationDateToCampaignFin} = req.body;
+
+    // Validación de campos
+    if (!nameproyect || !propietarioproyect || !creationDateFromCampaignIni || !creationDateToCampaignFin ) {
+        return res.status(400).json({ message: "Por favor, complete todos los campos" });
+    }
+
+    // Verificar si el proyecto ya existe
+    const checkProyectQuery = "SELECT * FROM proyectos WHERE nombre = ?";
+    connection.query(checkProyectQuery, [nameproyect], (err, results) => {
+        if (err) {
+            console.error("Error en la consulta:", err.message);
+            return res.status(500).json({ message: "Error interno del servidor" });
+        }
+
+        if (results.length > 0) {
+            return res.status(400).json({ message: "El proyecto ya existe" });
+        }
+
+        // Insertar el proyecto
+        const insertProyectQuery =
+            "INSERT INTO proyectos (nombre, propietario, fecha_creacion, fecha_fin) VALUES (?, ?, ?, ? )";
+        const fechaCreacion = creationDateFromCampaignIni || new Date().toISOString().split("T")[0]; // Fecha proporcionada por el cliente
+        const fechaFin = creationDateToCampaignFin || "2025-01-30"; // Fecha proporcionada por el cliente o fecha fija
+
+        connection.query(
+            insertProyectQuery,
+            [nameproyect, propietarioproyect, fechaCreacion, fechaFin],
+            (err, results) => {
+                if (err) {
+                    console.error("Error al insertar el proyecto:", err.message);
+                    return res.status(500).json({ message: "Error interno del servidor" });
+                }
+
+                res.json({
+                    message: "Proyecto registrado exitosamente",
+                    proyectId: results.insertId, // Devuelve el ID del proyecto creado
+                });
+            }
+        );
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Servidor corriendo en http://localhost:${port}`);
+  });
